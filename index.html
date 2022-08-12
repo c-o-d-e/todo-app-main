@@ -30,7 +30,12 @@
                 </div>
             </div>
             <div class="input">
-                <input type="text" placeholder="Create a new todo..." />
+                <div class="circle" onclick="addTask()"></div>
+                <input
+                    id="text-input"
+                    type="text"
+                    placeholder="Create a new todo..."
+                />
             </div>
             <div class="all-todos">
                 <div class="task" id="top-todo-label">
@@ -59,5 +64,6 @@
                 <h4>Drag and drop to reorder list</h4>
             </div>
         </main>
+        <script src="./script.js"></script>
     </body>
 </html>
