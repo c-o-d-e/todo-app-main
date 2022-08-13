@@ -5,30 +5,30 @@
     font-family: "Josefin Sans", sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background: url(./images/bg-desktop-light.jpg) no-repeat;
     background-color: #fafafa;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 85%;
+    min-height: 40rem;
+    height: fit-content;
     width: 40%;
+    margin: auto;
+    margin-top: 5rem;
+    min-width: 500px;
 }
 
 .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-basis: 10%;
 }
 
 .title-text {
@@ -40,13 +40,13 @@ h1 {
 }
 
 .input {
-    height: 10%;
-    flex-basis: 10%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: start;
+    height: 60px;
     background-color: white;
     border-radius: 5px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .input input {
@@ -87,20 +87,18 @@ h1 {
 
 .all-todos {
     display: flex;
-    flex-basis: 70%;
-    max-height: 70%;
-    justify-content: flex-start;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .task {
     display: flex;
-    justify-content: flex-start;
+    justify-content: start;
     background-color: white;
     border-bottom: 1px solid grey;
-    height: 15%;
+    height: 70px;
     align-items: center;
 }
 
@@ -127,17 +125,12 @@ h1 {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.bottom-nav,
-.middle-nav {
+.bottom-nav {
+    height: 50px;
+    font-size: 0.8rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-direction: row;
-}
-
-.bottom-nav {
-    height: 15%;
-    font-size: 0.8rem;
 }
 
 .bottom-nav h3,
@@ -151,11 +144,12 @@ h1 {
 }
 
 .middle-nav {
-    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
 }
 
 .drag-label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 3rem;
+    text-align: center;
 }
