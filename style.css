@@ -119,10 +119,16 @@ h1 {
     border: 0.5px solid grey;
     margin: auto 2rem;
     cursor: pointer;
+    display: flex;
 }
 
 .circle:hover {
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.circle img {
+    margin: auto;
+    pointer-events: none;
 }
 
 .bottom-nav {
@@ -152,4 +158,14 @@ h1 {
 .drag-label {
     margin: 3rem;
     text-align: center;
+}
+
+/* Completed tasks */
+
+.completed {
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }
