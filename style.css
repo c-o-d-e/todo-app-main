@@ -175,7 +175,8 @@ h1 {
 
 #all:hover,
 #active:hover,
-#completed:hover {
+#completed:hover,
+#clear-completed:hover {
     cursor: pointer;
     color: hsl(220, 98%, 61%);
 }
