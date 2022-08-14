@@ -170,3 +170,12 @@ h1 {
 .strikethrough {
     text-decoration: line-through;
 }
+
+/* Changes to All, Active & Completed headings */
+
+#all:hover,
+#active:hover,
+#completed:hover {
+    cursor: pointer;
+    color: hsl(220, 98%, 61%);
+}
