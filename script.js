@@ -3,14 +3,14 @@ function addTask() {
     document.getElementById("text-input").value = "";
     const taskContainer = document.getElementsByClassName("task-container");
     let newTask = `<div class="task">
-        <div class="circle" onclick="taskCompleted()"></div>
+        <div class="circle" onclick="taskCompleted(event)"></div>
         <h2 class="task-label">${textInput}</h2>
     </div>`;
     $(".task-container").append(newTask);
     console.log(newTask);
 }
 
-function taskCompleted() {
+function taskCompleted(event) {
     const domTokenList = event.target.classList;
     console.log("user click:", event.target);
 
