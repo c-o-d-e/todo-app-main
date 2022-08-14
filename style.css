@@ -102,10 +102,21 @@ h1 {
     height: 70px;
     align-items: center;
 }
+.new-task {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .task-label {
     font-weight: 400;
+    font-size: 1.2rem;
     color: #767885;
+}
+
+#cross:hover {
+    cursor: pointer;
 }
 
 #top-todo-label {
