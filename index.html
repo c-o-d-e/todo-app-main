@@ -58,11 +58,13 @@
                 </div>
 
                 <div class="bottom-nav">
-                    <h3>5 items left</h3>
+                    <h3><span id="items-left">2</span> items left</h3>
                     <div class="middle-nav">
-                        <h3>All</h3>
-                        <h3>Active</h3>
-                        <h3>Completed</h3>
+                        <h3 id="all" onclick="allTasks()">All</h3>
+                        <h3 id="active" onclick="activeTasks()">Active</h3>
+                        <h3 id="completed" onclick="completedTasks()">
+                            Completed
+                        </h3>
                     </div>
                     <h3>Clear Completed</h3>
                 </div>
