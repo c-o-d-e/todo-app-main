@@ -13,6 +13,8 @@ function addTask() {
     document.getElementById("items-left").innerHTML = itemsLeft; //updates html with correct itemsLeft
 }
 
+const completedDivs = [];
+
 function taskCompleted(event) {
     const domTokenList = event.target.classList;
 
@@ -31,6 +33,7 @@ function taskCompleted(event) {
         itemsLeft++;
     } else {
         event.target.classList.add("completed");
+        completedDivs.push(event.target.parentElement);
         event.target.nextElementSibling.classList.add("strikethrough");
         $(event.target).append(tickMark);
         itemsLeft--;
@@ -63,5 +66,11 @@ function completedTasks() {
 function allTasks() {
     for (i = 0; i < task.length; i++) {
         task[i].style.display = "flex";
+    }
+}
+
+function clearCompleted() {
+    for (i = 0; i < completedDivs.length; i++) {
+        completedDivs[i].remove();
     }
 }
