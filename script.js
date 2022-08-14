@@ -6,7 +6,14 @@ function addTask() {
     const taskContainer = document.getElementsByClassName("task-container");
     let newTask = `<div class="task">
         <div class="circle" onclick="taskCompleted(event)"></div>
-        <h2 class="task-label">${textInput}</h2>
+        <div class="new-task">
+                            <h2 class="task-label">${textInput}</h2><img
+                                id="cross"
+                                src="./images/icon-cross.svg"
+                                alt="cross icon"
+                            />
+                        </div>
+        
     </div>`;
     $(".task-container").append(newTask);
     itemsLeft++;
