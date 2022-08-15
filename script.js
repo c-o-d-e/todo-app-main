@@ -3,9 +3,10 @@ let itemsLeft = Number(document.getElementById("items-left").innerHTML); //get n
 const task = document.getElementsByClassName("task"); //gets an object with all task divs
 
 function topTaskLabelBorderRadius() {
-    console.log(task[0]);
-    task[0].style.borderTopLeftRadius = "5px";
-    task[0].style.borderTopRightRadius = "5px";
+    if (task[0]) {
+        task[0].style.borderTopLeftRadius = "5px";
+        task[0].style.borderTopRightRadius = "5px";
+    }
 }
 
 topTaskLabelBorderRadius();
@@ -14,7 +15,8 @@ function addTask() {
     const textInput = document.getElementById("text-input").value;
     document.getElementById("text-input").value = "";
     const taskContainer = document.getElementsByClassName("task-container");
-    let newTask = `<div class="task">
+    let newTask = `<div class="task" draggable="true"
+    ondrop="drop(event)">
         <div class="circle" onclick="taskCompleted(event)"></div>
         <div class="new-task">
                             <h2 class="task-label">${textInput}</h2><img
@@ -96,4 +98,37 @@ function deleteTask(event) {
     itemsLeft--;
     document.getElementById("items-left").innerHTML = itemsLeft; //updates html with correct itemsLeft
     topTaskLabelBorderRadius();
+}
+
+// Drag and Drop functions and logic
+
+let dragged = null;
+
+document.addEventListener("dragstart", event => {
+    // store a ref. on the dragged elem
+    dragged = event.target;
+});
+
+document.addEventListener("dragover", event => {
+    // prevent default to allow drop
+    event.preventDefault();
+});
+
+let hovered = null;
+
+document.addEventListener("dragenter", event => {
+    if (event.target.className === "task") {
+        hovered = event.target;
+    }
+});
+
+function drop(event) {
+    // prevent default action to allow drop
+    event.preventDefault();
+    // logic for moving the dragged element
+    if (hovered == task[0]) {
+        $(dragged).insertBefore(hovered);
+    } else {
+        $(dragged).insertAfter(hovered);
+    }
 }
