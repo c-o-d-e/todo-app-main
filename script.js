@@ -1,5 +1,15 @@
 let itemsLeft = Number(document.getElementById("items-left").innerHTML); //get number in the span of items left
 
+const task = document.getElementsByClassName("task"); //gets an object with all task divs
+
+function topTaskLabelBorderRadius() {
+    console.log(task[0]);
+    task[0].style.borderTopLeftRadius = "5px";
+    task[0].style.borderTopRightRadius = "5px";
+}
+
+topTaskLabelBorderRadius();
+
 function addTask() {
     const textInput = document.getElementById("text-input").value;
     document.getElementById("text-input").value = "";
@@ -9,6 +19,7 @@ function addTask() {
         <div class="new-task">
                             <h2 class="task-label">${textInput}</h2><img
                                 id="cross"
+                                onclick="deleteTask(event)"
                                 src="./images/icon-cross.svg"
                                 alt="cross icon"
                             />
@@ -20,7 +31,7 @@ function addTask() {
     document.getElementById("items-left").innerHTML = itemsLeft; //updates html with correct itemsLeft
 }
 
-const completedDivs = [];
+const completedDivs = []; //all completed divs in array to use in clearCompleted function
 
 function taskCompleted(event) {
     const domTokenList = event.target.classList;
@@ -47,8 +58,6 @@ function taskCompleted(event) {
     }
     document.getElementById("items-left").innerHTML = itemsLeft; //updates html with correct itemsLeft
 }
-
-const task = document.getElementsByClassName("task"); //gets an object with all task divs
 
 function activeTasks() {
     for (i = 0; i < task.length; i++) {
@@ -80,4 +89,11 @@ function clearCompleted() {
     for (i = 0; i < completedDivs.length; i++) {
         completedDivs[i].remove();
     }
+}
+
+function deleteTask(event) {
+    event.target.parentElement.parentElement.remove();
+    itemsLeft--;
+    document.getElementById("items-left").innerHTML = itemsLeft; //updates html with correct itemsLeft
+    topTaskLabelBorderRadius();
 }
