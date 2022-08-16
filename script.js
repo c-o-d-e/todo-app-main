@@ -132,3 +132,47 @@ function drop(event) {
         $(dragged).insertAfter(hovered);
     }
 }
+
+// Theme changing function
+
+let onLoad = "light"; //Boolean in selecting light/dark theme
+function toggleTheme() {
+    if (onLoad == "light") {
+        document.getElementById("themeLogo").src = "./images/icon-sun.svg";
+        document.body.style.background =
+            "url(./images/bg-desktop-dark.jpg) no-repeat";
+        document.body.style.backgroundColor = "#000000";
+
+        const keysTaskArray = Object.keys(task);
+        keysTaskArray.forEach(i => {
+            task[i].style.backgroundColor = "hsl(235, 24%, 19%)";
+            document.getElementsByClassName("task-label")[i].style.color =
+                "rgba(255, 255, 255, 0.7)";
+            task[i].style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+        });
+        const bottomNav =
+            document.getElementsByClassName("bottom-nav")[0].style;
+        bottomNav.backgroundColor = "hsl(235, 24%, 19%)";
+
+        document.getElementsByClassName("input")[0].style.backgroundColor =
+            "hsl(235, 24%, 19%)";
+        document.getElementById("text-input").style.backgroundColor =
+            "hsl(235, 24%, 19%)";
+        document.getElementById("text-input").style.color =
+            "rgba(255, 255, 255, 0.7)";
+        document.getElementById("text-input").classList.add = "dark-theme";
+
+        onLoad = "dark";
+        return;
+    }
+
+    if (onLoad == "dark") {
+        document.getElementById("themeLogo").src = "./images/icon-moon.svg";
+        document.body.style.background =
+            "url(./images/bg-desktop-light.jpg) no-repeat";
+        document.body.style.backgroundColor = "#ffffff";
+        const keysTaskArray = Object.keys(task);
+        keysTaskArray.forEach(i => (task[i].style.backgroundColor = "white"));
+        onLoad = "light";
+    }
+}
