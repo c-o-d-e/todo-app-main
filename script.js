@@ -1,5 +1,5 @@
 let itemsLeft = Number(document.getElementById("items-left").innerHTML); //get number in the span of items left
-
+let onLoad = "light"; //Boolean in selecting light/dark theme
 const task = document.getElementsByClassName("task"); //gets an object with all task divs
 
 function topTaskLabelBorderRadius() {
@@ -11,11 +11,87 @@ function topTaskLabelBorderRadius() {
 
 topTaskLabelBorderRadius();
 
+// Theme changing function
+
+function toggleTheme() {
+    if (onLoad == "light") {
+        document.getElementById("themeLogo").src = "./images/icon-sun.svg";
+        document.body.style.background =
+            "url(./images/bg-desktop-dark.jpg) no-repeat top";
+        document.body.style.backgroundColor = "#000000";
+
+        const keysTaskArray = Object.keys(task);
+        keysTaskArray.forEach(i => {
+            task[i].style.backgroundColor = "hsl(235, 24%, 19%)";
+            document.getElementsByClassName("task-label")[i].style.color =
+                "rgba(255, 255, 255, 0.7)";
+            task[i].style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+        });
+        const bottomNav =
+            document.getElementsByClassName("bottom-nav")[0].style;
+        bottomNav.backgroundColor = "hsl(235, 24%, 19%)";
+
+        document.getElementsByClassName("input")[0].style.backgroundColor =
+            "hsl(235, 24%, 19%)";
+        document.getElementById("text-input").style.backgroundColor =
+            "hsl(235, 24%, 19%)";
+        document.getElementById("text-input").style.color =
+            "rgba(255, 255, 255, 0.7)";
+        document.getElementById("text-input").classList.add = "dark-theme";
+
+        // bottom nav color change
+        $(".bottom-nav > h3, .h3nav, .drag-label > h4").css("color", "#767885");
+
+        $(".h3nav").on("click", function () {
+            $(".h3nav").css("color", "#767885");
+            $(this).css("color", "hsl(220, 98%, 61%)");
+        });
+
+        $(".h3nav").hover(
+            function () {
+                $(this).css("color", "hsl(220, 98%, 61%)");
+            },
+            function () {
+                $(this).css("color", "#767885");
+            }
+        );
+
+        onLoad = "dark";
+        return;
+    }
+
+    if (onLoad == "dark") {
+        document.getElementById("themeLogo").src = "./images/icon-moon.svg";
+        document.body.style.background =
+            "url(./images/bg-desktop-light.jpg) no-repeat top";
+        document.body.style.backgroundColor = "#ffffff";
+        const keysTaskArray = Object.keys(task);
+        keysTaskArray.forEach(i => (task[i].style.backgroundColor = "white"));
+        onLoad = "light";
+    }
+}
+
 function addTask() {
     const textInput = document.getElementById("text-input").value;
     document.getElementById("text-input").value = "";
     const taskContainer = document.getElementsByClassName("task-container");
-    let newTask = `<div class="task" draggable="true"
+    let newTask;
+    if (onLoad == "dark") {
+        newTask = `<div class="task task-dark-theme" draggable="true"
+    ondrop="drop(event)">
+        <div class="circle" onclick="taskCompleted(event)"></div>
+        <div class="new-task">
+                            <h2 class="task-label task-label-dark-theme">${textInput}</h2><img
+                                id="cross"
+                                onclick="deleteTask(event)"
+                                src="./images/icon-cross.svg"
+                                alt="cross icon"
+                            />
+                        </div>
+        
+    </div>`;
+    } else {
+        newTask = `<div class="task" draggable="true"
     ondrop="drop(event)">
         <div class="circle" onclick="taskCompleted(event)"></div>
         <div class="new-task">
@@ -28,7 +104,10 @@ function addTask() {
                         </div>
         
     </div>`;
+    }
+
     $(".task-container").append(newTask);
+
     itemsLeft++;
     document.getElementById("items-left").innerHTML = itemsLeft; //updates html with correct itemsLeft
 }
@@ -50,11 +129,21 @@ function taskCompleted(event) {
 
         event.target.classList.remove("completed");
         event.target.nextElementSibling.classList.remove("strikethrough");
+        if (onLoad == "dark") {
+            event.target.nextElementSibling.firstElementChild.style.color =
+                "rgba(255, 255, 255, 0.7)";
+        }
+
         itemsLeft++;
     } else {
         event.target.classList.add("completed");
         completedDivs.push(event.target.parentElement);
         event.target.nextElementSibling.classList.add("strikethrough");
+        if (onLoad == "dark") {
+            event.target.nextElementSibling.firstElementChild.style.color =
+                "#767885";
+        }
+
         $(event.target).append(tickMark);
         itemsLeft--;
     }
@@ -130,49 +219,5 @@ function drop(event) {
         $(dragged).insertBefore(hovered);
     } else {
         $(dragged).insertAfter(hovered);
-    }
-}
-
-// Theme changing function
-
-let onLoad = "light"; //Boolean in selecting light/dark theme
-function toggleTheme() {
-    if (onLoad == "light") {
-        document.getElementById("themeLogo").src = "./images/icon-sun.svg";
-        document.body.style.background =
-            "url(./images/bg-desktop-dark.jpg) no-repeat top";
-        document.body.style.backgroundColor = "#000000";
-
-        const keysTaskArray = Object.keys(task);
-        keysTaskArray.forEach(i => {
-            task[i].style.backgroundColor = "hsl(235, 24%, 19%)";
-            document.getElementsByClassName("task-label")[i].style.color =
-                "rgba(255, 255, 255, 0.7)";
-            task[i].style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
-        });
-        const bottomNav =
-            document.getElementsByClassName("bottom-nav")[0].style;
-        bottomNav.backgroundColor = "hsl(235, 24%, 19%)";
-
-        document.getElementsByClassName("input")[0].style.backgroundColor =
-            "hsl(235, 24%, 19%)";
-        document.getElementById("text-input").style.backgroundColor =
-            "hsl(235, 24%, 19%)";
-        document.getElementById("text-input").style.color =
-            "rgba(255, 255, 255, 0.7)";
-        document.getElementById("text-input").classList.add = "dark-theme";
-
-        onLoad = "dark";
-        return;
-    }
-
-    if (onLoad == "dark") {
-        document.getElementById("themeLogo").src = "./images/icon-moon.svg";
-        document.body.style.background =
-            "url(./images/bg-desktop-light.jpg) no-repeat top";
-        document.body.style.backgroundColor = "#ffffff";
-        const keysTaskArray = Object.keys(task);
-        keysTaskArray.forEach(i => (task[i].style.backgroundColor = "white"));
-        onLoad = "light";
     }
 }
