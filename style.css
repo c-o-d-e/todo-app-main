@@ -197,3 +197,11 @@ h1 {
     cursor: pointer;
     color: hsl(220, 98%, 61%);
 }
+
+/* Hero image on a larger screen */
+
+@media screen and (min-width: 1200px) {
+    body {
+        background: url(./images/bg-desktop-light.jpg) no-repeat top;
+    }
+}

@@ -140,7 +140,7 @@ function toggleTheme() {
     if (onLoad == "light") {
         document.getElementById("themeLogo").src = "./images/icon-sun.svg";
         document.body.style.background =
-            "url(./images/bg-desktop-dark.jpg) no-repeat";
+            "url(./images/bg-desktop-dark.jpg) no-repeat top";
         document.body.style.backgroundColor = "#000000";
 
         const keysTaskArray = Object.keys(task);
@@ -169,7 +169,7 @@ function toggleTheme() {
     if (onLoad == "dark") {
         document.getElementById("themeLogo").src = "./images/icon-moon.svg";
         document.body.style.background =
-            "url(./images/bg-desktop-light.jpg) no-repeat";
+            "url(./images/bg-desktop-light.jpg) no-repeat top";
         document.body.style.backgroundColor = "#ffffff";
         const keysTaskArray = Object.keys(task);
         keysTaskArray.forEach(i => (task[i].style.backgroundColor = "white"));
