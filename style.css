@@ -200,15 +200,8 @@ h1 {
 
 /* Changes to All, Active & Completed headings */
 
-#all:hover,
-#active:hover,
-#completed:hover,
-#clear-completed:hover {
+.h3nav:hover {
     cursor: pointer;
-    color: hsl(220, 98%, 61%);
-}
-
-#all:focus {
     color: hsl(220, 98%, 61%);
 }
 

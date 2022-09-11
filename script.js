@@ -1,3 +1,8 @@
+$(".h3nav").on("click", function () {
+    $(".h3nav").css("color", "rgba(0, 0, 0, 0.4)");
+    $(this).css("color", "hsl(220, 98%, 61%)");
+});
+
 let itemsLeft = Number(document.getElementById("items-left").innerHTML); //get number in the span of items left
 let onLoad = "light"; //Boolean in selecting light/dark theme
 const task = document.getElementsByClassName("task"); //gets an object with all task divs
@@ -47,15 +52,6 @@ function toggleTheme() {
             $(this).css("color", "hsl(220, 98%, 61%)");
         });
 
-        $(".h3nav").hover(
-            function () {
-                $(this).css("color", "hsl(220, 98%, 61%)");
-            },
-            function () {
-                $(this).css("color", "#767885");
-            }
-        );
-
         onLoad = "dark";
         return;
     }
@@ -66,11 +62,34 @@ function toggleTheme() {
             "url(./images/bg-desktop-light.jpg) no-repeat top";
         document.body.style.backgroundColor = "#ffffff";
         const keysTaskArray = Object.keys(task);
-        keysTaskArray.forEach(i => (task[i].style.backgroundColor = "white"));
+        keysTaskArray.forEach(i => {
+            task[i].style.backgroundColor = "white";
+            document.getElementsByClassName("task-label")[i].style.color =
+                "#767885";
+            task[i].style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
+        });
+
+        $(".bottom-nav, .input, #text-input").css("background-color", "white");
+        $(".bottom-nav > h3, .drag-label > h4").css(
+            "color",
+            "rgba(0, 0, 0, 0.25)"
+        );
+        $(".h3nav").css("color", "rgba(0, 0, 0, 0.4)");
+
+        $("#text-input").attr("placeholder", function () {
+            $(this).css("color", "rgba(0, 0, 0, 0.25)");
+        });
+
+        $(".h3nav").on("click", function () {
+            $(this).css("color", "hsl(220, 98%, 61%)");
+        });
+
         onLoad = "light";
+        return;
     }
 }
 
+//Adds new todo task
 function addTask() {
     const textInput = document.getElementById("text-input").value;
     document.getElementById("text-input").value = "";
