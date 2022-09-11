@@ -122,13 +122,23 @@
                 <div class="bottom-nav">
                     <h3><span id="items-left">5</span> items left</h3>
                     <div class="middle-nav">
-                        <h3 id="all" onclick="allTasks()">All</h3>
-                        <h3 id="active" onclick="activeTasks()">Active</h3>
-                        <h3 id="completed" onclick="completedTasks()">
+                        <h3 class="h3nav" id="all" onclick="allTasks()">All</h3>
+                        <h3 class="h3nav" id="active" onclick="activeTasks()">
+                            Active
+                        </h3>
+                        <h3
+                            class="h3nav"
+                            id="completed"
+                            onclick="completedTasks()"
+                        >
                             Completed
                         </h3>
                     </div>
-                    <h3 id="clear-completed" onclick="clearCompleted()">
+                    <h3
+                        id="clear-completed"
+                        class="h3nav"
+                        onclick="clearCompleted()"
+                    >
                         Clear Completed
                     </h3>
                 </div>
