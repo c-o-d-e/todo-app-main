@@ -52,6 +52,8 @@ function toggleTheme() {
             $(this).css("color", "hsl(220, 98%, 61%)");
         });
 
+        $(".mobile-middle-nav").css("background-color", "hsl(235, 24%, 19%)");
+
         onLoad = "dark";
         return;
     }
@@ -83,6 +85,8 @@ function toggleTheme() {
         $(".h3nav").on("click", function () {
             $(this).css("color", "hsl(220, 98%, 61%)");
         });
+
+        $(".mobile-middle-nav").css("background-color", "white");
 
         onLoad = "light";
         return;
