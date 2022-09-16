@@ -205,10 +205,53 @@ h1 {
     color: hsl(220, 98%, 61%);
 }
 
+/* Hides mobile active states */
+
+.mobile-middle-nav {
+    display: none;
+}
+
 /* Hero image on a larger screen */
 
 @media screen and (min-width: 1200px) {
     body {
         background: url(./images/bg-desktop-light.jpg) no-repeat top;
+    }
+}
+
+/* Mobile responsiveness */
+
+@media screen and (max-width: 520px) {
+    html {
+        font-size: 12px;
+    }
+    .container {
+        min-width: 300px;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    #cross {
+        margin-right: 1rem;
+    }
+
+    .middle-nav {
+        display: none;
+    }
+
+    .mobile-middle-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 5px;
+        height: 50px;
+        width: 100%;
+        margin-top: 2rem;
+        box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .mobile-middle-nav > * {
+        margin: 1rem;
     }
 }
