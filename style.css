@@ -254,4 +254,8 @@ h1 {
     .mobile-middle-nav > * {
         margin: 1rem;
     }
+
+    .drag-label {
+        display: none;
+    }
 }
